@@ -1,0 +1,65 @@
+<div class="container" style="margin:100px auto">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h4 class="mb-4">Modificar receta</h4>
+
+            <form action="/admin/recetas/modificar" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" value="{{receta.id}}" name="id">
+                <div class="form-group mb-3">
+                    <label for="titulo">Título:</label>
+                    <input type="text" class="form-control" id="titulo" placeholder="Título de la Receta" name="titulo"  value="{{receta.titulo}}">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="descripcion">Descripción Breve:</label>
+                    <textarea class="form-control" id="descripcion" placeholder="Resumen corto de la receta" name="descripcion" rows="2">{{receta.descripcion}}</textarea>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="tiempo">Tiempo de Preparación (minutos):</label>
+                    <input type="number" class="form-control" id="tiempo" placeholder="Ej: 45" name="tiempo" value="{{receta.tiempo}}">
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="categoria">Categoría:</label>
+                    <select class="form-control" id="categoria" name="categoria">
+                        <option value="" disabled>Selecciona una categoría</option>
+                        <option value="Plato Principal">Plato Principal</option>
+                        <option value="Entrada">Entrada</option>
+                        <option value="Postre">Postre</option>
+                        <option value="Bebida">Bebida</option>
+                    </select>
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="instrucciones">Instrucciones:</label>
+                    <textarea class="form-control" id="instrucciones" placeholder="Instrucciones paso a paso" name="instrucciones" rows="5">{{receta.instrucciones}}</textarea>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="ingredientes">Ingredientes (Formato JSON o Lista Separada):</label>
+                    <textarea class="form-control" id="ingredientes" placeholder="Ej: { 'harina': '200g', 'huevos': '2 unid.' }" name="ingredientes" rows="3">{{receta.ingredientes}}</textarea>
+                    <small class="form-text text-muted">Asegúrate de que el formato de los ingredientes sea válido (ej. JSON).</small>
+                </div>
+                
+                <div class="form-group mb-3">
+                    <p>
+                        <label>Imagen: <input type="file" name="imagen" id="imagen"></label>
+                    </p>
+                    <p>
+                        <label><input type="checkbox" name="img_delete" id="img_delete" value="1">Eliminar imagen actual</label>
+                        <input type="hidden" name="img_original" value="{{receta.img_id}}">
+                    </p>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-2">Modificar</button>
+            </form>
+
+            {{#if error}}
+            <h5 class="mt-4 text-danger">{{message}}</h5>
+            {{/if}}
+
+        </div>
+    </div>
+</div>

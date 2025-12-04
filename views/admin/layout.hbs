@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body style="height: 100vh;">
+    <header class='d-flex justify-content-between'>
+      <div class='d-flex align-items-center ms-3'>
+        <img src='/images/logo.png' width="50" alt='Recetas'></img>
+        <h1 class='m-0'>Recetas</h1>
+        {{#if admin}}
+        <h6 class='m-0 ms-1 rol'>admin</h6>
+        {{/if}}
+      </div>
+      {{#if usuario}}
+        <div class='d-flex align-items-center me-4'>
+          <a href="login/logout" class="btn btn-primary">Cerrar sesión <i class="bi bi-box-arrow-right"></i></a>
+        </div>
+      {{/if}}
+    </header>
+    {{#if admin}}
+      <nav >
+        <div>
+          <ul>
+            <li><a href="/admin/novedades" class="{{isActive url 'admin/novedades'}}">Novedades</a></li>
+            <li><a href="/admin/recetas" class="{{isActive url 'admin/recetas'}}">Mis Recetas</a></li>
+          </ul>
+        </div>
+      </nav>
+    {{else if usuario}}
+      <nav >
+        <div>
+          <ul>
+            <li><a href="/inicio" class="{{isActive url '/'}}">Recetas</a></li>
+            <li><a href="/recetas" class="{{isActive url 'recetas'}}">Mis Recetas</a></li>
+            <li><a href="/novedades" class="{{isActive url 'novedades'}}">Novedades</a></li>
+            <li><a href="/contacto" class="{{isActive url 'contacto'}}">Contacto</a></li>
+          </ul>
+        </div>
+      </nav>
+    {{/if}}
+    <div class="holder mt-3">
+      {{{body}}}
+    </div>
+    
+    <footer>
+      <p>Derechos reservados. Recetas 2025</p>
+    </footer>
+  </body>
+</html>
