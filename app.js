@@ -70,6 +70,7 @@ app.get('/productos', function(req, res) {
 /* Ruta 3 */
 app.use('/notas', notasRouter)
 app.use('/admin/login', loginRouter)
+app.use('/', loginRouter)
 app.use('/admin/novedades', secured, novedadesRouter)
 app.use('/admin/recetas', secured, recetasRouter)
 app.use('/admin/recetas/agregar', secured, recetasRouter)
